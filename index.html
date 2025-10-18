@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>TikTok Rewards</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 100vh;
+      overflow: hidden;
+      padding: 30px 15px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 180px;
+      height: 180px;
+      background: url('https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg') no-repeat center/contain;
+      margin-top: 20px;
+      filter: drop-shadow(0 0 8px #25f4ee);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-top: 15px;
+      background: linear-gradient(90deg, #25f4ee, #fe2c55);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    .rewards {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 40px;
+      width: 100%;
+    }
+
+    .reward {
+      width: 80%;
+      max-width: 280px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 15px 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #fff;
+      transition: 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reward::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -50%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(37,244,238,0.2), rgba(254,44,85,0.2));
+      transform: skewX(-15deg);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .reward:hover {
+      transform: scale(1.05);
+      border-color: #fe2c55;
+    }
+
+    .reward:hover::before {
+      opacity: 1;
+    }
+
+    .discount {
+      display: block;
+      font-size: 0.9rem;
+      color: #25f4ee;
+      margin-top: 6px;
+      font-weight: 500;
+      text-shadow: 0 0 6px #25f4ee;
+    }
+
+    footer {
+      font-size: 0.8rem;
+      color: #777;
+      margin-bottom: 15px;
+    }
+
+    @media (min-aspect-ratio: 9/16) {
+      body { height: 100dvh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo"></div>
+
+  <div>
+    <h1>TikTok Rewards</h1>
+    <p>Ajude o usuário <strong>@aisdj329</strong> à alcançar o Top Ranking com os presentes abaixo:</p>
+
+    <div class="rewards">
+      <div class="reward">1 🎁 Presente</div>
+
+      <div class="reward">
+        3 🎁 Presentes
+        <!-- <span class="discount">-8% de desconto</span> -->
+      </div>
+
+      <div class="reward">
+        5 🎁 Presentes
+        <span class="discount">-15% de desconto</span>
+      </div>
+
+      <div class="reward">
+        10 🎁 Presentes
+        <span class="discount">-20% de desconto</span>
+      </div>
+    </div>
+  </div>
+  <br>
+  <footer>© 2025 TikTok Rewards</footer>
+</body>
+</html>
