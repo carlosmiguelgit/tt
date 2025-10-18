@@ -6,6 +6,7 @@
   <title>TikTok Rewards</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       background-color: #000;
       color: #fff;
@@ -18,7 +19,59 @@
       overflow: hidden;
       padding: 30px 15px;
       text-align: center;
+      position: relative;
     }
+
+    /* Fundo animado de confetes */
+    .confetti {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .confetti span {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #25f4ee;
+      border-radius: 50%;
+      animation: fall 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    .confetti span:nth-child(odd) {
+      background: #fe2c55;
+      width: 6px;
+      height: 6px;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) translateX(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) translateX(20px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Distribui partículas aleatoriamente */
+    .confetti span:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 5s; }
+    .confetti span:nth-child(2) { left: 15%; animation-delay: 1s; animation-duration: 6s; }
+    .confetti span:nth-child(3) { left: 25%; animation-delay: 2s; animation-duration: 5.5s; }
+    .confetti span:nth-child(4) { left: 35%; animation-delay: 3s; animation-duration: 6.2s; }
+    .confetti span:nth-child(5) { left: 45%; animation-delay: 1.5s; animation-duration: 5.8s; }
+    .confetti span:nth-child(6) { left: 55%; animation-delay: 2.8s; animation-duration: 6s; }
+    .confetti span:nth-child(7) { left: 65%; animation-delay: 0.5s; animation-duration: 5.4s; }
+    .confetti span:nth-child(8) { left: 75%; animation-delay: 1.2s; animation-duration: 6.3s; }
+    .confetti span:nth-child(9) { left: 85%; animation-delay: 2.5s; animation-duration: 5.7s; }
+    .confetti span:nth-child(10){ left: 95%; animation-delay: 3.3s; animation-duration: 6s; }
 
     .logo {
       width: 180px;
@@ -26,6 +79,7 @@
       background: url('https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg') no-repeat center/contain;
       margin-top: 20px;
       filter: drop-shadow(0 0 8px #25f4ee);
+      z-index: 2;
     }
 
     h1 {
@@ -36,12 +90,14 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: 0 0 10px rgba(255,255,255,0.3);
+      z-index: 2;
     }
 
     p {
       margin-top: 10px;
       font-size: 1rem;
       color: #ccc;
+      z-index: 2;
     }
 
     .rewards {
@@ -51,6 +107,7 @@
       gap: 15px;
       margin-top: 40px;
       width: 100%;
+      z-index: 2;
     }
 
     .reward {
@@ -65,7 +122,8 @@
       color: #fff;
       transition: 0.2s;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
+      z-index: 2;
     }
 
     .reward::before {
@@ -99,10 +157,26 @@
       text-shadow: 0 0 6px #25f4ee;
     }
 
+    .badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: linear-gradient(90deg, #fe2c55, #25f4ee);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 8px rgba(254,44,85,0.6);
+    }
+
     footer {
       font-size: 0.8rem;
       color: #777;
       margin-bottom: 15px;
+      z-index: 2;
     }
 
     @media (min-aspect-ratio: 9/16) {
@@ -111,32 +185,35 @@
   </style>
 </head>
 <body>
+  <!-- Efeito de fundo -->
+  <div class="confetti">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
   <div class="logo"></div>
 
   <div>
     <h1>TikTok Rewards</h1>
-    <p>Ajude o usuário <strong>@aisdj329</strong> à alcançar o Top Ranking com os presentes abaixo:</p>
+    <p><strong>Ajude @aisdj329</strong> a vencer o Tiktok Rewards:</p>
 
     <div class="rewards">
-      <div class="reward">1 🎁 Presente</div>
+      <div class="reward">1 🥇 Medalha</div>
+      <div class="reward">3 🥇 Medalhas</div>
 
       <div class="reward">
-        3 🎁 Presentes
-        <!-- <span class="discount">-8% de desconto</span> -->
+        <span class="badge">Mais Pedida</span>
+        5 🥇 Medalhas
+        <span class="discount">-5% de desconto</span>
       </div>
 
       <div class="reward">
-        5 🎁 Presentes
-        <span class="discount">-15% de desconto</span>
-      </div>
-
-      <div class="reward">
-        10 🎁 Presentes
-        <span class="discount">-20% de desconto</span>
+        10 🥇 Medalhas
+        <span class="discount">-25% de desconto</span>
       </div>
     </div>
   </div>
-  <br>
+<br>
   <footer>© 2025 TikTok Rewards</footer>
 </body>
 </html>
