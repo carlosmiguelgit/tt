@@ -123,13 +123,11 @@
       transition: 0.2s;
       position: relative;
       overflow: visible;
-      text-decoration: none;
       z-index: 2;
-      display: block;
-      cursor: pointer;
+      text-decoration: none;
     }
 
-    a.reward::before {
+    .reward::before {
       content: "";
       position: absolute;
       top: 0;
@@ -142,13 +140,12 @@
       transition: opacity 0.3s;
     }
 
-    a.reward:hover {
+    .reward:hover {
       transform: scale(1.05);
       border-color: #fe2c55;
-      box-shadow: 0 0 10px rgba(254,44,85,0.4);
     }
 
-    a.reward:hover::before {
+    .reward:hover::before {
       opacity: 1;
     }
 
@@ -174,6 +171,12 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       box-shadow: 0 0 8px rgba(254,44,85,0.6);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 8px rgba(254,44,85,0.6); }
+      50% { transform: scale(1.15); box-shadow: 0 0 15px rgba(37,244,238,0.9); }
     }
 
     footer {
@@ -202,17 +205,17 @@
     <p><strong>Ajude @aisdj329</strong> a vencer o Tiktok Rewards:</p>
 
     <div class="rewards">
-      <a href="https://go.ironpayapp.com.br/qjdcvxfwpl" class="reward">1 🥇 Medalha</a>
+      <a class="reward" href="https://go.ironpayapp.com.br/qjdcvxfwpl" target="_blank">1 🥇 Medalha</a>
 
-      <a href="https://go.ironpayapp.com.br/tsvju" class="reward">3 🥇 Medalhas</a>
+      <a class="reward" href="https://go.ironpayapp.com.br/tsvju" target="_blank">3 🥇 Medalhas</a>
 
-      <a href="https://go.ironpayapp.com.br/yqktj" class="reward">
+      <a class="reward" href="https://go.ironpayapp.com.br/yqktj" target="_blank">
         <span class="badge">Mais Pedida</span>
         5 🥇 Medalhas
         <span class="discount">-5% de desconto</span>
       </a>
 
-      <a href="https://go.ironpayapp.com.br/peva4" class="reward">
+      <a class="reward" href="https://go.ironpayapp.com.br/peva4" target="_blank">
         10 🥇 Medalhas
         <span class="discount">-25% de desconto</span>
       </a>
