@@ -7,19 +7,32 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
     body {
       background-color: #000;
       color: #fff;
       font-family: 'Poppins', sans-serif;
       display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      padding: 30px 15px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      gap: 15px;
+      max-width: 320px;
+      width: 90%;
     }
 
     /* Fundo animado de confetes */
@@ -65,12 +78,10 @@
     .confetti span:nth-child(10){ left: 95%; animation-delay: 3.3s; animation-duration: 6s; }
 
     .logo {
-      width: 140px;
-      height: 140px;
+      width: 120px;
+      height: 120px;
       background: url('https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg') no-repeat center/contain;
-      margin-bottom: 10px;
       filter: drop-shadow(0 0 8px #25f4ee);
-      z-index: 2;
     }
 
     h1 {
@@ -80,40 +91,33 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: 0 0 10px rgba(255,255,255,0.3);
-      z-index: 2;
     }
 
     p {
-      margin-top: 8px;
       font-size: 1rem;
       color: #ccc;
-      z-index: 2;
     }
 
     .rewards {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 15px;
-      margin-top: 25px;
+      gap: 12px;
       width: 100%;
-      z-index: 2;
+      margin-top: 15px;
     }
 
     a.reward {
-      width: 80%;
-      max-width: 280px;
+      width: 100%;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px;
-      padding: 15px 0;
-      font-size: 1.2rem;
+      padding: 12px 0;
+      font-size: 1.1rem;
       font-weight: 600;
       color: #fff;
       transition: 0.2s;
       position: relative;
-      overflow: visible;
-      z-index: 2;
       text-decoration: none;
       cursor: pointer;
     }
@@ -170,7 +174,13 @@
       50% { transform: scale(1.15); box-shadow: 0 0 15px rgba(37,244,238,0.9); }
     }
 
-    /* Popup */
+    footer {
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 10px;
+    }
+
+    /* POPUP */
     .popup-bg {
       position: fixed;
       top: 0; left: 0;
@@ -234,13 +244,6 @@
       font-size: 0.75rem;
       color: #888;
     }
-
-    footer {
-      font-size: 0.8rem;
-      color: #777;
-      margin-top: 25px;
-      z-index: 2;
-    }
   </style>
 </head>
 <body>
@@ -249,11 +252,11 @@
     <span></span><span></span><span></span><span></span><span></span>
   </div>
 
-  <div class="logo"></div>
+  <div class="container">
+    <div class="logo"></div>
 
-  <div>
     <h1>TikTok Rewards</h1>
-    <p><strong>Ajude @aisdj329</strong> a vencer o Tiktok Rewards:</p>
+    <p><strong>Ajude @aisdj329</strong> a vencer o TikTok Rewards:</p>
 
     <div class="rewards">
       <a class="reward" data-name="1 Medalha" data-link="https://go.ironpayapp.com.br/qjdcvxfwpl">1 🥇 Medalha</a>
@@ -270,9 +273,9 @@
         <span class="discount">-25% de desconto</span>
       </a>
     </div>
-  </div>
 
-  <footer>© 2025 TikTok Rewards</footer>
+    <footer>© 2025 TikTok Rewards</footer>
+  </div>
 
   <!-- POPUP -->
   <div class="popup-bg" id="popup-bg">
@@ -291,7 +294,6 @@
     const popupText = document.getElementById('popup-text');
     const confirmarBtn = document.getElementById('confirmar');
     const cancelarBtn = document.getElementById('cancelar');
-
     let currentLink = '';
 
     rewards.forEach(reward => {
