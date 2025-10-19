@@ -128,6 +128,13 @@
       cursor: pointer;
     }
 
+    .reward.mimo {
+      font-size: 1rem;
+      padding: 7px 0; /* metade da altura */
+      width: 60%;
+      opacity: 0.9;
+    }
+
     .reward::before {
       content: "";
       position: absolute;
@@ -266,7 +273,6 @@
     <p><strong>Ajude @aisdj329</strong> a vencer o Tiktok Rewards:</p>
 
     <div class="rewards">
-      <a class="reward" data-name="🎁 Mimos" data-link="https://go.ironpayapp.com.br/lwv1t">🎁 Mimos</a>
       <a class="reward" data-name="1 Medalha" data-link="https://go.ironpayapp.com.br/qjdcvxfwpl">1 🥇 Medalha</a>
       <a class="reward" data-name="3 Medalhas" data-link="https://go.ironpayapp.com.br/tsvju">3 🥇 Medalhas</a>
       <a class="reward" data-name="5 Medalhas" data-link="https://go.ironpayapp.com.br/yqktj">
@@ -278,6 +284,9 @@
         10 🥇 Medalhas
         <span class="discount">-25% de desconto</span>
       </a>
+
+      <!-- Mimos menor e abaixo -->
+      <a class="reward mimo" data-name="🎁 Mimos" data-link="https://go.ironpayapp.com.br/lwv1t">🎁 Mimos</a>
     </div>
   </div>
 
@@ -323,4 +332,3 @@
   </script>
 </body>
 </html>
-
