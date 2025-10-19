@@ -61,7 +61,7 @@
       }
     }
 
-    /* Distribui partículas aleatoriamente */
+    /* Confetes randomizados */
     .confetti span:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 5s; }
     .confetti span:nth-child(2) { left: 15%; animation-delay: 1s; animation-duration: 6s; }
     .confetti span:nth-child(3) { left: 25%; animation-delay: 2s; animation-duration: 5.5s; }
@@ -125,6 +125,7 @@
       overflow: visible;
       z-index: 2;
       text-decoration: none;
+      cursor: pointer;
     }
 
     .reward::before {
@@ -179,20 +180,80 @@
       50% { transform: scale(1.15); box-shadow: 0 0 15px rgba(37,244,238,0.9); }
     }
 
+    /* Popup */
+    .popup-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .popup {
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 25px 20px;
+      width: 85%;
+      max-width: 320px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(37,244,238,0.3);
+    }
+
+    .popup h2 {
+      background: linear-gradient(90deg, #25f4ee, #fe2c55);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .popup p {
+      font-size: 0.95rem;
+      color: #ccc;
+      margin-bottom: 15px;
+    }
+
+    .popup button {
+      margin: 8px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .confirmar {
+      background: linear-gradient(90deg, #fe2c55, #25f4ee);
+      color: #fff;
+    }
+
+    .cancelar {
+      background: rgba(255,255,255,0.1);
+      color: #ccc;
+    }
+
+    .popup small {
+      display: block;
+      margin-top: 15px;
+      font-size: 0.75rem;
+      color: #888;
+    }
+
     footer {
       font-size: 0.8rem;
       color: #777;
       margin-bottom: 15px;
       z-index: 2;
     }
-
-    @media (min-aspect-ratio: 9/16) {
-      body { height: 100dvh; }
-    }
   </style>
 </head>
 <body>
-  <!-- Efeito de fundo -->
   <div class="confetti">
     <span></span><span></span><span></span><span></span><span></span>
     <span></span><span></span><span></span><span></span><span></span>
@@ -205,17 +266,15 @@
     <p><strong>Ajude @aisdj329</strong> a vencer o Tiktok Rewards:</p>
 
     <div class="rewards">
-      <a class="reward" href="https://go.ironpayapp.com.br/qjdcvxfwpl" target="_blank">1 🥇 Medalha</a>
-
-      <a class="reward" href="https://go.ironpayapp.com.br/tsvju" target="_blank">3 🥇 Medalhas</a>
-
-      <a class="reward" href="https://go.ironpayapp.com.br/yqktj" target="_blank">
+      <a class="reward" data-name="🎁 Mimos" data-link="https://go.ironpayapp.com.br/mimos">🎁 Mimos</a>
+      <a class="reward" data-name="1 Medalha" data-link="https://go.ironpayapp.com.br/qjdcvxfwpl">1 🥇 Medalha</a>
+      <a class="reward" data-name="3 Medalhas" data-link="https://go.ironpayapp.com.br/tsvju">3 🥇 Medalhas</a>
+      <a class="reward" data-name="5 Medalhas" data-link="https://go.ironpayapp.com.br/yqktj">
         <span class="badge">Mais Pedida</span>
         5 🥇 Medalhas
         <span class="discount">-5% de desconto</span>
       </a>
-
-      <a class="reward" href="https://go.ironpayapp.com.br/peva4" target="_blank">
+      <a class="reward" data-name="10 Medalhas" data-link="https://go.ironpayapp.com.br/peva4">
         10 🥇 Medalhas
         <span class="discount">-25% de desconto</span>
       </a>
@@ -223,5 +282,44 @@
   </div>
 
   <footer>© 2025 TikTok Rewards</footer>
+
+  <!-- POPUP -->
+  <div class="popup-bg" id="popup-bg">
+    <div class="popup">
+      <h2>Confirmação</h2>
+      <p id="popup-text"></p>
+      <button class="confirmar" id="confirmar">Confirmar compra</button>
+      <button class="cancelar" id="cancelar">Escolher outro</button>
+      <small>* Você só poderá comprar uma vez independente do escolhido</small>
+    </div>
+  </div>
+
+  <script>
+    const rewards = document.querySelectorAll('.reward');
+    const popupBg = document.getElementById('popup-bg');
+    const popupText = document.getElementById('popup-text');
+    const confirmarBtn = document.getElementById('confirmar');
+    const cancelarBtn = document.getElementById('cancelar');
+
+    let currentLink = '';
+
+    rewards.forEach(reward => {
+      reward.addEventListener('click', () => {
+        const name = reward.getAttribute('data-name');
+        currentLink = reward.getAttribute('data-link');
+        popupText.textContent = `Você selecionou ${name}`;
+        popupBg.style.display = 'flex';
+      });
+    });
+
+    confirmarBtn.addEventListener('click', () => {
+      if (currentLink) window.open(currentLink, '_blank');
+      popupBg.style.display = 'none';
+    });
+
+    cancelarBtn.addEventListener('click', () => {
+      popupBg.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
